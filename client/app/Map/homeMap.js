@@ -8,20 +8,21 @@ angular.module('bootCamp.map', [
 // if there are factory dependencies, add function it depends on as a function argument
 .controller('MapController', function($scope, $firebase, $firebaseObject) {
   console.log("inside MapController---------------");
-
   var ref = new Firebase("https://bondfire2.firebaseio.com");
-  var dataD = (
-    $scope.getData = function() {
-      console.log('hes on fire!');
-      ref.on("value", function(snapshot) {
-        console.log(snapshot.val());
-      })
-    })();
-  console.log(dataD);
-  $(function() {
+  var aData='yizzle';
+
+$scope.getData = function() {
+  console.log('hi');
+  ref.on("value", function(snapshot) {
+    console.log(snapshot.val());
+    aData=snapshot.val();
+  })
+}
+$scope.getData();
+	 setTimeout(function(){ $(function() {
 
     var testimonials = ["<b>'We recently hired a bootcamp grad at SolarCity, best decision we've ever made'</b> - Ilan Musk (CEO Tesla)", "<b>'Since 2013, we've constantly recruited bootcamp alum. They create a hardworking atmosphere that makes me love coming to work everyday'</b> - Mark Zuckerberg (CEO Facebook)", "<b>'I met 2 of the most intelligent people I've ever known while at Telegraph Academy...3 months later we have a million-dollar business'</b> - Eric Eng(CEO bullcrap.com)", "<b>'My first job was at a company that had already hired alumni of another school, afterwards I was told they put in a good word'</b> - Bosa Saposki (Software Engineer Twitter)"];
-
+    console.log('aData', aData);
 
     var alpha = ['a', 'b', 'c', 'd'];
 
@@ -152,5 +153,5 @@ angular.module('bootCamp.map', [
       }
     });
   });
-
+},1000);
 })
